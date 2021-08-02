@@ -1,4 +1,4 @@
-﻿namespace InsiteTeamTask.Models
+﻿namespace InsiteTeamTask.Data.Models
 {
     public class Member
     {

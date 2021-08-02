@@ -1,8 +1,7 @@
 ﻿using System;
 
-namespace InsiteTeamTask.Models
+namespace InsiteTeamTask.Data.Models
 {
-
     public enum ProductType
     {
         Member = 1,
