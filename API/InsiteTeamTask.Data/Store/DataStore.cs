@@ -22,9 +22,9 @@ namespace InsiteTeamTask.Data.Store
 
         public static IEnumerable<Season> Seasons = new List<Season>
         {
-            new Season() { Id = 12 },
-            new Season() { Id = 16 },
-            new Season() { Id = 19 },
+            new Season() { Id = 12, Name = "2018/2019" },
+            new Season() { Id = 16, Name = "2019/2020" },
+            new Season() { Id = 19, Name = "2020/2021" },
         };
 
         public static IEnumerable<Game> Games = new List<Game>
