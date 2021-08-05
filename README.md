@@ -50,7 +50,7 @@ What we are looking for is code quality. That translates to project structure, c
 ## Submission
 Create a fork of this repository. Branch off the master branch, and when you are done, create a pull request to merge the new branch in your fork into the master branch to submit your exercise. The branch should be named after your name.
 
-## Considerations
+## Potential issues
 The C# API solution has target frameworks of .NET Core 2.1, meaning that machines without the 2.1 SDK will likely have issues starting the project. To fix this, you can either [download the .NET Core 2.1 SDK from Microsoft](https://dotnet.microsoft.com/download/dotnet/2.1), or change the `TargetFramework` property in each of the project `.csproj` files to whichever version of .NET Core your machine is working on.
 
 Similarly, the Angular project is using Angular 8. Angular is a bit more forgiving, but any issues can usually be fixed by upgrading the project.
