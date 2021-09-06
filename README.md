@@ -30,7 +30,8 @@ The team has also created a simple angular application inside the `UI` folder in
 
 This task comes in three parts:
 - Create a service or set of services which retrieve data from the API
-- Create a simple GUI to display a collection of members and tickets barcodes
+- Create a simple GUI to display a collection of attendance records
+  - This should include the member or ticket barcode
 - Create an interface to allow the user to filter attendance by either:
   - A combination of season and game
   - A product code
