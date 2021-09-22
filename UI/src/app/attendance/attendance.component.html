@@ -1,0 +1,78 @@
+<form class="p-3" [formGroup]="SearchForm" (ngSubmit)="Search()">
+<div class="row">
+    <div class="col-md-3 col-sm-6">
+        <div class="form-group">
+          <label>Product Code</label>
+          <input type="text" formControlName="code" class="form-control" />
+
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <button class="btn btn-outline-primary button-margin" type="submit">Search</button>
+      </div>
+      <div class="col-md-3">
+          <p></p>
+      </div>
+      <div class="col-md-3">
+        <p class="thick align-content"> Total Attendees: {{total}}</p>
+    </div>
+</div>
+</form>
+<form class="p-3" [formGroup]="SearchGameForm" (ngSubmit)="SearchGame()">
+    <div class="row">
+        <div class="col-md-2 col-sm-3">
+            <div class="form-group">
+              <label>Season ID</label>
+              <input type="number" formControlName="seasonId" class="form-control" />
+    
+            </div>
+          </div>
+          <div class="col-md-2 col-sm-3">
+            <div class="form-group">
+              <label>Game Number</label>
+              <input type="number" formControlName="gameNumber" class="form-control" />
+    
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <button class="btn btn-outline-primary button-margin" type="submit">Search</button>
+          </div>
+          <div class="col-md-2"><p></p></div>
+          
+          <div class="col-md-3">
+            <button
+            class="btn btn-outline-danger align-content button-margin"
+            (click)="clearAll()"
+            type="button"
+          >
+            Clear All Filters
+          </button>
+        </div>
+         
+    </div>
+    </form>
+<div class="row p-3">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Barcode</th>
+                <th scope="col">Attendance Type</th>
+                <th scope="col">Member ID</th>
+                <th scope="col">Game</th>
+                <th scope="col">Season</th>
+              </tr>
+        </thead>
+        <tbody>
+          <tr  *ngFor="let el of attendance;let i = index">
+            <th scope="row">{{i + 1}}</th>
+            <td>{{el.barcode != null && el.barcode != '' ? el.barcode : 'N/A'}}</td>
+            <td *ngIf="el.attendanceType == 0">Season Ticket</td>
+            <td *ngIf="el.attendanceType == 1">Game Ticket</td>
+            <td>{{el.memberId}}</td>
+            <td>{{el.game}}</td>
+            <td>{{el.season}}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>

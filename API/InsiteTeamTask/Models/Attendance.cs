@@ -13,5 +13,9 @@
         public int MemberId { get; set; }
 
         public string Barcode { get; set; }
+
+        public string Season { get; set; }
+
+        public string Game { get; set; }
     }
 }

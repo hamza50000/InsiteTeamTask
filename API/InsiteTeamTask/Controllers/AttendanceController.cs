@@ -9,13 +9,35 @@ namespace InsiteTeamTask.Controllers
     [ApiController]
     public class AttendanceController : ControllerBase
     {
-        private readonly IDataService service;
+        private readonly IDataService _service;
+
+        public AttendanceController(IDataService service)
+		{
+            _service = service;
+		}
 
         [HttpGet]
-        public IEnumerable<Attendance> Get()
+        [Route("GetAttendance")]
+        public IActionResult Get()
         {
-            var attendance = service.GetAttendance();
-            return attendance;
+            var attendance = _service.GetAttendance();
+            return Ok(attendance);
+        }
+
+        [HttpGet]
+        [Route("GetAttendance/{productCode}")]
+        public IActionResult Get(string productCode)
+        {
+            var attendance = _service.GetAttendanceForProduct(productCode);
+            return Ok(attendance);
+        }
+
+        [HttpGet]
+        [Route("GetAttendance/{seasonId}/{gameNumber}")]
+        public IActionResult Get(int seasonId, int gameNumber)
+        {
+            var attendance = _service.GetAttendanceForGame(seasonId, gameNumber);
+            return Ok(attendance);
         }
     }
 }
