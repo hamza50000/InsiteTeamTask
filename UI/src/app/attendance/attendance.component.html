@@ -51,28 +51,36 @@
          
     </div>
     </form>
-<div class="row p-3">
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Barcode</th>
-                <th scope="col">Attendance Type</th>
-                <th scope="col">Member ID</th>
-                <th scope="col">Game</th>
-                <th scope="col">Season</th>
-              </tr>
-        </thead>
-        <tbody>
-          <tr  *ngFor="let el of attendance;let i = index">
-            <th scope="row">{{i + 1}}</th>
-            <td>{{el.barcode != null && el.barcode != '' ? el.barcode : 'N/A'}}</td>
-            <td *ngIf="el.attendanceType == 0">Season Ticket</td>
-            <td *ngIf="el.attendanceType == 1">Game Ticket</td>
-            <td>{{el.memberId}}</td>
-            <td>{{el.game}}</td>
-            <td>{{el.season}}</td>
-          </tr>
-        </tbody>
-      </table>
+<div class="container">
+  <table mdbTable #tableEl="mdbTable" class="z-depth-1">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Barcode</th>
+      <th scope="col">Attendance Type</th>
+      <th scope="col">Member ID</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let el of attendance; let i = index">
+      <th *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex"
+          scope="row">{{i + 1}}</th>
+      <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{el.barcode != null && el.barcode != '' ? el.barcode : 'N/A'}}</td>
+      <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex && el.attendanceType == 0">Season Ticket</td>
+      <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex && el.attendanceType == 1">Game Ticket</td>
+
+      <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{el.memberId}}</td>
+      <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{el.game}}</td>
+      <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{el.season}}</td>
+
+    </tr>
+    </tbody>
+    <tfoot class="grey lighten-5 w-100">
+    <tr>
+      <td colspan="4">
+        <mdb-table-pagination [tableEl]="tableEl" [searchDataSource]="attendance"></mdb-table-pagination>
+      </td>
+    </tr>
+    </tfoot>
+  </table>
 </div>
